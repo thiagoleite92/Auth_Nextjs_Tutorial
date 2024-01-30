@@ -1,7 +1,7 @@
 'use server';
 
 import { z } from 'zod';
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 
 import { RegisterSchema } from '@/schemas';
 import { db } from '@/lib/db';
@@ -21,7 +21,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: 'Email already in use' };
   }
 
-  const hashedPassword = await bcrypt.hash(password, 6);
+  const hashedPassword = await bcryptjs.hash(password, 6);
 
   await db.user.create({
     data: {
