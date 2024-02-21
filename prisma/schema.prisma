@@ -22,7 +22,7 @@ model User {
   password              String?
   role                  UserRole               @default(USER)
   accounts              Account[]
-  isTwofactorEnabled    Boolean                @default(false)
+  isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
 }
 
